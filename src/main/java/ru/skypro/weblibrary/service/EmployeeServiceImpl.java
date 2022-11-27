@@ -1,6 +1,9 @@
 package ru.skypro.weblibrary.service;
 
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 import ru.skypro.weblibrary.dto.EmployeeRequest;
 import ru.skypro.weblibrary.entity.Employee;
 
@@ -21,8 +24,17 @@ public class EmployeeServiceImpl implements EmployeeService {
         if (employeeRequest.getFirstName() == null || employeeRequest.getLastName() == null) {
             throw new IllegalArgumentException("Employee name should be set");
         }
-        Employee employee = new Employee(employeeRequest.getFirstName(), employeeRequest.getLastName(), employeeRequest.getSecondName(),
-                employeeRequest.getDepartment(), employeeRequest.getSalary());
+        if (!StringUtils.isAlpha(employeeRequest.getFirstName())
+                || !StringUtils.isAlpha(employeeRequest.getLastName())
+                || !StringUtils.isAlpha(employeeRequest.getSecondName())
+        )
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Name shoud be alpha");
+        Employee employee = new Employee(
+                StringUtils.capitalize(employeeRequest.getFirstName()),
+                StringUtils.capitalize(employeeRequest.getLastName()),
+                StringUtils.capitalize(employeeRequest.getSecondName()),
+                employeeRequest.getDepartment(),
+                        employeeRequest.getSalary());
         this.employees.put(employee.getId(),employee);
         return employee;
     }

@@ -16,9 +16,20 @@ POST http://localhost:8080/employee
 Content-Type: application/json
 
 {
-  "firstName": "Test2",
-  "lastName": "Test2",
-  "secondName": "Test2",
+  "firstName": "fdsa",
+  "lastName": "asdf",
+  "secondName": "fds",
+  "department": 2,
+  "salary": 2000
+}
+###Добавление сотрудника3
+POST http://localhost:8080/employee
+Content-Type: application/json
+
+{
+  "firstName": "fds2a",
+  "lastName": "asd3f",
+  "secondName": "fd s",
   "department": 2,
   "salary": 2000
 }
