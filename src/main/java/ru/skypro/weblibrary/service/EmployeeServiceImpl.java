@@ -24,6 +24,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         if (employeeRequest.getFirstName() == null || employeeRequest.getLastName() == null) {
             throw new IllegalArgumentException("Employee name should be set");
         }
+        if (employeeRequest.getSalary() == null || employeeRequest.getDepartment() == null){
+            throw new IllegalArgumentException("Department or Salary is not defined");
+        }
         if (!StringUtils.isAlpha(employeeRequest.getFirstName())
                 || !StringUtils.isAlpha(employeeRequest.getLastName())
                 || !StringUtils.isAlpha(employeeRequest.getSecondName())
