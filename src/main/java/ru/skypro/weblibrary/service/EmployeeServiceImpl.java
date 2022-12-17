@@ -24,6 +24,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         if (employeeRequest.getFirstName() == null || employeeRequest.getLastName() == null) {
             throw new IllegalArgumentException("Employee name should be set");
         }
+        if (employeeRequest.getSalary() == null || employeeRequest.getDepartment() == null){
+            throw new IllegalArgumentException("Department or Salary is not defined");
+        }
         if (!StringUtils.isAlpha(employeeRequest.getFirstName())
                 || !StringUtils.isAlpha(employeeRequest.getLastName())
                 || !StringUtils.isAlpha(employeeRequest.getSecondName())
@@ -40,17 +43,17 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Integer getSumAlary() {
+    public Integer getSumSalary() {
         return employees.values().stream().mapToInt(Employee::getSalary).sum();
     }
 
     @Override
-    public Employee getMinAlary() {
+    public Employee getMinSalary() {
         return employees.values().stream().reduce((e1, e2) -> e1.getSalary() < e2.getSalary() ? e1 : e2).orElseThrow();
     }
 
     @Override
-    public Employee getMaxAlary() {
+    public Employee getMaxSalary() {
         return employees.values().stream().reduce((e1, e2) -> e1.getSalary() > e2.getSalary() ? e1 : e2).orElseThrow();
     }
 

@@ -1,5 +1,7 @@
 package ru.skypro.weblibrary.entity;
 
+import java.util.Objects;
+
 public class Employee {
     private static int counter;
     private final Integer id;
@@ -40,5 +42,17 @@ public class Employee {
 
     public Integer getSalary() {
         return salary;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Employee employee)) return false;
+        return getId().equals(employee.getId()) && getFirstName().equals(employee.getFirstName()) && getLastName().equals(employee.getLastName()) && getSecondName().equals(employee.getSecondName()) && getDepartment().equals(employee.getDepartment()) && getSalary().equals(employee.getSalary());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getFirstName(), getLastName(), getSecondName(), getDepartment(), getSalary());
     }
 }

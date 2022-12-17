@@ -29,15 +29,15 @@ public class EmployeeController {
 
     @GetMapping("employee/salary/sum")
     public Integer getSumAlary(){
-        return  employeeService.getSumAlary();
+        return  employeeService.getSumSalary();
     }
     @GetMapping("employee/salary/min")
     public Employee getMinAlary(){
-        return  employeeService.getMinAlary();
+        return  employeeService.getMinSalary();
     }
     @GetMapping("employee/salary/max")
     public Employee getMaxAlary(){
-        return  employeeService.getMaxAlary();
+        return  employeeService.getMaxSalary();
     }
     @GetMapping("employee/high-salary")
     public List<Employee> getHighSalary(@RequestParam Integer salary){

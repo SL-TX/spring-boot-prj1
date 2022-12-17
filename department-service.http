@@ -1,0 +1,9 @@
+###– возвращает список сотрудников по департаменту
+GET http://localhost:8080/department/employees
+### – возвращает сумму зарплат по департаменту
+GET http://localhost:8080/department/2/salary/sum
+
+### – возвращает максимальную зарплату по департаменту
+GET http://localhost:8080/department/2/salary/max
+### – возвращает минимальную зарплату по департаменту
+GET http://localhost:8080/department/2/salary/min
