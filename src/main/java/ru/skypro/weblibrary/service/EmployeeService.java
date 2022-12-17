@@ -12,11 +12,11 @@ public interface EmployeeService {
 
     Employee addEmployee(EmployeeRequest employeeRequest);
 
-    Integer getSumAlary();
+    Integer getSumSalary();
 
-    Employee getMinAlary();
+    Employee getMinSalary();
 
-    Employee getMaxAlary();
+    Employee getMaxSalary();
 
     List<Employee> getHighSalary(Integer salary);
 }

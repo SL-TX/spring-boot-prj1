@@ -40,17 +40,17 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Integer getSumAlary() {
+    public Integer getSumSalary() {
         return employees.values().stream().mapToInt(Employee::getSalary).sum();
     }
 
     @Override
-    public Employee getMinAlary() {
+    public Employee getMinSalary() {
         return employees.values().stream().reduce((e1, e2) -> e1.getSalary() < e2.getSalary() ? e1 : e2).orElseThrow();
     }
 
     @Override
-    public Employee getMaxAlary() {
+    public Employee getMaxSalary() {
         return employees.values().stream().reduce((e1, e2) -> e1.getSalary() > e2.getSalary() ? e1 : e2).orElseThrow();
     }
 
